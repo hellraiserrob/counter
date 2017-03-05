@@ -1,1 +1,1 @@
-# counter
+A tiny example app using react/redux on the frontend and express / mongodb server
