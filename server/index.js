@@ -3,6 +3,8 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser');
+
 
 // connection details
 const config = require('./config.js')
@@ -29,11 +31,20 @@ mongoose.connect(config.queryString, (err) => {
 const CounterCtrl = require('./controllers/counter.controller')
 
 
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 // routes
 
 app.get('/', (req, res) => {
+    CounterCtrl.getAll(req, res)
+})
 
-    console.log('get route');
+app.get('/id', (req, res) => {
+    CounterCtrl.getById(req, res)
+})
 
-    CounterCtrl.getCount(req, res)
+
+app.post('/update', (req, res) => {
+    CounterCtrl.update(req, res)
 })
