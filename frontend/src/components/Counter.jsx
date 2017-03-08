@@ -3,8 +3,15 @@ import React, { Component } from 'react';
 class Counter extends Component {
 
     render(){
+        
+        console.log(this.props)
+        
         return(
+
             <div>
+                <p>
+                    {this.props.title}
+                </p>
                 <h1>
                     {this.props.value}
                 </h1>

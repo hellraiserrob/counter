@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 // import { fetchQuestions } from '../actions/questionActions'
 import { INC, DEC } from '../actions/counterActions.js'
 
-import Counter from '../Counter'
+import Counters from '../components/Counters'
 
 class CounterContainer extends Component  {
 
@@ -13,7 +13,7 @@ class CounterContainer extends Component  {
 
         return (
             <div>
-                <Counter {...this.props} />
+                <Counters {...this.props} />
             </div>
         )
     }
@@ -22,10 +22,10 @@ class CounterContainer extends Component  {
 
 function mapStateToProps(state) {
 
-    const { value } = state.counterReducer
+    const counters = state.counterReducer
 
 	return {
-		value
+		counters
 	}
 }
 

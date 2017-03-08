@@ -1,7 +1,11 @@
 
-const initialState = {
+const initialState = [{
+    title: 'Counter 1',
     value: 10
-}
+},{
+    title: 'Counter 2',
+    value: 150
+}]
 
 function counterReducer(state = initialState, action){
 
