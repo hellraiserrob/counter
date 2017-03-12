@@ -6,18 +6,26 @@ class Counter extends Component {
         
         console.log(this.props)
         
+        const {
+            _id,
+            name,
+            value,
+            handleUpdateCounter,
+            isUpdating
+        } = this.props
+
         return(
 
             <div>
                 <p>
-                    {this.props.title}
+                    {name}
                 </p>
                 <h1>
-                    {this.props.value}
+                    {value}
                 </h1>
 
-                <button onClick={this.props.handleDEC}>-</button>
-                <button onClick={this.props.handleINC}>+</button>
+                <button disabled={isUpdating} onClick={() => handleUpdateCounter(_id, value - 1)}>-</button>
+                <button disabled={isUpdating} onClick={() => handleUpdateCounter(_id, value + 1)}>+</button>
             </div>
         )
     }

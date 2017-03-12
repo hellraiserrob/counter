@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-// import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk'
 import reducer from './reducers/index'
 // import { getAnswers } from './libs/localStorage'
 
@@ -17,7 +17,7 @@ function configureStore(preloadedState) {
     reducer,
     preloadedState,
     applyMiddleware(
-    //   thunkMiddleware
+      thunkMiddleware
       //loggerMiddleware
     )
   )

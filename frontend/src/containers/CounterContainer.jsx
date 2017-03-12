@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 // import { fetchQuestions } from '../actions/questionActions'
-import { INC, DEC } from '../actions/counterActions.js'
+import { updateCounter, fetchCounters } from '../actions/counterActions.js'
 
 import Counters from '../components/Counters'
 
@@ -12,9 +12,7 @@ class CounterContainer extends Component  {
     render(){  
 
         return (
-            <div>
-                <Counters {...this.props} />
-            </div>
+			<Counters {...this.props} />
         )
     }
 
@@ -22,20 +20,22 @@ class CounterContainer extends Component  {
 
 function mapStateToProps(state) {
 
-    const counters = state.counterReducer
+    const { counters, isFetching, isError } = state.counterReducer
 
 	return {
-		counters
+		counters,
+		isFetching,
+		isError
 	}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		handleINC() {
-			dispatch(INC())
+		handleUpdateCounter(_id, value) {
+			dispatch(updateCounter(_id, value))
 		},
-		handleDEC() {
-			dispatch(DEC())
+		handleFetchCounters() {
+			dispatch(fetchCounters())
 		}
 	}
 }

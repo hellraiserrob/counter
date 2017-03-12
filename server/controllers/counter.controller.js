@@ -33,15 +33,17 @@ const getById = (req, res) => {
 
 const update = (req, res) => {
 
-
-    var id = '58bdd2ecf36d2837b8113463'
+    var id = req.body._id
     var value = parseInt(req.body.value)
+    var options = {
+         new: true
+    }
 
     Counter.findOneAndUpdate({
         _id: id
     }, {
         value: value
-    }, function(err, response){
+    }, options, function(err, response){
 
         if (err) {
             res.send(err)

@@ -1,23 +1,68 @@
 
-const initialState = [{
-    title: 'Counter 1',
-    value: 10
-},{
-    title: 'Counter 2',
-    value: 150
-}]
+const initialState = {
+    isFetching: false,
+    isError: false,
+    isUpdating: false,
+    counters: []
+}
 
-function counterReducer(state = initialState, action){
+function counterReducer(state = initialState, action) {
 
-    switch(action.type){
+    switch (action.type) {
 
-        
-        case "INC": {
-            return {...state, value: state.value += 1}
+        case 'REQUEST_COUNTERS': {
+            return Object.assign({}, state, {
+                isFetching: true
+            })
         }
+
+        case 'RECEIVE_COUNTERS': {
+            return Object.assign({}, state, {
+                isFetching: false,
+                counters: action.payload
+            })
+        }
+
+        case 'RECEIVE_COUNTERS_ERROR': {
+            return Object.assign({}, state, {
+                isFetching: false,
+                isError: true,
+                counters: []
+            })
+        }
+
+        case 'REQUEST_COUNTER_UPDATE': {
+            return Object.assign({}, state, {
+                isUpdating: true
+            })
+        }
+
+        case 'RECEIVE_COUNTER_UPDATE': {
+
+            const update = action.payload
+
+            return Object.assign({}, state, {
+                isFetching: false,
+                counters: state.counters.map((item, index) => {
+                    
+                    if(update._id !== item._id){
+                        return item
+                    }
+
+                    return {
+                        ...item, ...update
+                    }
+
+                })
+            })
+        }
+
         
-        case "DEC": {
-            return {...state, value: state.value -= 1}
+        case 'RECEIVE_COUNTER_UDATE_ERROR': {
+            return Object.assign({}, state, {
+                isFetching: false,
+                isError: true
+            })
         }
 
         default: {
@@ -25,7 +70,7 @@ function counterReducer(state = initialState, action){
         }
     }
 
-    
+
 
 }
 

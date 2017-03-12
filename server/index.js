@@ -36,15 +36,19 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // routes
 
-app.get('/', (req, res) => {
+app.get('/api/getAll', (req, res) => {
     CounterCtrl.getAll(req, res)
 })
 
-app.get('/id', (req, res) => {
+app.get('/getById', (req, res) => {
     CounterCtrl.getById(req, res)
 })
 
 
-app.post('/update', (req, res) => {
+app.post('/api/update', (req, res) => {
     CounterCtrl.update(req, res)
+})
+
+app.get('*', (req, res) => {
+    console.log('404')
 })
