@@ -1,7 +1,15 @@
 'use strict'
 
+const socket = require('socket.io')
 const express = require('express')
+const http = require('http')
+
 const app = express()
+const server = http.createServer(app)
+
+var io = socket.listen(server);
+io.set('origins = *');
+
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 
@@ -21,9 +29,24 @@ mongoose.connect(config.queryString, (err) => {
         return console.log(err)
     }
 
-    app.listen(3001, () => {
+    server.listen(3001, () => {
         console.log('listening on 3001')
     })
+
+
+    io.on('connection', (socket) => {
+        console.log('connection...')
+
+        socket.on('hello', (name) => {
+            console.log(`hello...${name}`)
+        })
+
+        socket.on('disconnect', () => {
+            console.log(`disconnect...`)
+        })
+    })
+
+    
 
 })
 
@@ -49,6 +72,7 @@ app.post('/api/update', (req, res) => {
     CounterCtrl.update(req, res)
 })
 
-app.get('*', (req, res) => {
-    console.log('404')
-})
+// app.get('*', (req, res) => {
+//     console.log('404')
+// })
+

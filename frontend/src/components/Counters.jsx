@@ -29,7 +29,12 @@ class Counters extends Component {
                 }
 
                 {counters.map((counter, index)=>{
-                    return <Counter key={index} {...counter} handleUpdateCounter={handleUpdateCounter} />
+                    return <Counter 
+                                {...counter}
+                                isUpdating={isUpdating}
+                                key={index} 
+                                handleUpdateCounter={handleUpdateCounter}
+                             />
                 })}
             </div>
         )
