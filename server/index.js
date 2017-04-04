@@ -21,6 +21,15 @@ const config = require('./config.js')
 // set to use es6 promises
 mongoose.Promise = global.Promise
 
+
+//controllers
+const CounterCtrl = require('./controllers/counter.controller')
+
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+
 // connection to mongo lab 
 mongoose.connect(config.queryString, (err) => {
 
@@ -37,25 +46,25 @@ mongoose.connect(config.queryString, (err) => {
     io.on('connection', (socket) => {
         console.log('connection...')
 
-        socket.on('hello', (name) => {
-            console.log(`hello...${name}`)
-        })
+        // socket.emit('joiner');
+
+        io.sockets.emit('joiner');
+
 
         socket.on('disconnect', () => {
             console.log(`disconnect...`)
         })
+
+
+        app.post('/api/update', (req, res) => {
+            CounterCtrl.update(req, res, socket)
+        })
+
     })
 
-    
+
 
 })
-
-//controllers
-const CounterCtrl = require('./controllers/counter.controller')
-
-
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // routes
 
@@ -67,10 +76,6 @@ app.get('/getById', (req, res) => {
     CounterCtrl.getById(req, res)
 })
 
-
-app.post('/api/update', (req, res) => {
-    CounterCtrl.update(req, res)
-})
 
 // app.get('*', (req, res) => {
 //     console.log('404')

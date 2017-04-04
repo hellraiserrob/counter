@@ -31,7 +31,7 @@ const getById = (req, res) => {
 
 }
 
-const update = (req, res) => {
+const update = (req, res, socket) => {
 
     var id = req.body._id
     var value = parseInt(req.body.value)
@@ -50,6 +50,8 @@ const update = (req, res) => {
         }
 
         res.send(response)
+        // io.sockets.emit('action', {type:'UPDATE', payload: response});
+        socket.broadcast.emit('action', {type:'UPDATE', payload: response});
     })
 
 }

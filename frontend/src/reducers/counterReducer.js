@@ -10,6 +10,26 @@ function counterReducer(state = initialState, action) {
 
     switch (action.type) {
 
+        case 'UPDATE': {
+            //console.log('update', action);
+            const update = action.payload
+
+            return Object.assign({}, state, {
+                isFetching: false,
+                counters: state.counters.map((item, index) => {
+                    
+                    if(update._id !== item._id){
+                        return item
+                    }
+
+                    return {
+                        ...item, ...update
+                    }
+
+                })
+            })
+        }
+
         case 'REQUEST_COUNTERS': {
             return Object.assign({}, state, {
                 isFetching: true

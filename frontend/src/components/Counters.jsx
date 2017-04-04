@@ -32,7 +32,7 @@ class Counters extends Component {
                     return <Counter 
                                 {...counter}
                                 isUpdating={isUpdating}
-                                key={index} 
+                                key={counter._id} 
                                 handleUpdateCounter={handleUpdateCounter}
                              />
                 })}
