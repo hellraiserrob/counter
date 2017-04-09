@@ -12,14 +12,7 @@ class CounterContainer extends Component  {
     render(){  
 
         return (
-			<div>
-				<h1>Counters</h1>
-                <h2>A small project</h2>
-
-				<hr/>
-				
-				<Counters {...this.props} />
-			</div>
+			<Counters {...this.props} />
         )
     }
 

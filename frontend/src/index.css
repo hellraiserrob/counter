@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: 50px;
+  margin:0;
   padding: 0;
   /*font-family: sans-serif;*/
   /*font-family: Helvetica, sans-serif;*/
@@ -11,7 +11,7 @@ body {
   /*font-family: Georgia, 'Times New Roman', Times, serif;*/
 
 
-  /*text-align: center;*/
+  text-align: center;
 }
 
 body, margin {
@@ -29,47 +29,33 @@ body, button {
 
 }
 
-h1, h2 {
-  margin: 0;
-  padding:0;
-  font-weight: normal;
-}
 
-h1 {
-  font-size: 100px;
-}
-
-h2 {
-  color: #999;
-  margin: 0 0 50px;
-}
-
-hr {
-  height: 0;
-  border:0;
-  border-bottom: 1px solid #ddd;
-  margin: 0 0 50px 0;
+.loading, .error, .updating {
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 
-
-
+.text-danger {
+  color: darkred;
+}
 
 button {
   border:0;
   background: none;
-  font-size: 40px;
   /*font-weight: 500;*/
   padding:0;
-  margin:0;
-  font-weight: 400;
-  
+  margin:0; 
   color: #999;
 
   cursor: pointer;
 
   transition: all ease 0.3s;
   
+}
+.material-icons {
+font-size: 40px;
 }
 
 button:focus {
@@ -81,39 +67,29 @@ button:hover {
 }
 
 
-.counters {
-  margin: 0 -15px;
-
-}
 
 .counter {
 
-  float:left;
-  width: 25%;
-  padding: 0 15px;
+  padding: 50px;
 
 
-  /*padding: 50px 0;
-  border-bottom: 1px solid #ddd;*/
+  /*padding: 50px 0;*/
+  border-bottom: 1px solid #ddd;
 
   transition: all ease 0.1s;
 }
 
 
-.inner {
-  /*background: #000;*/
-  /*color: #fff;*/
-  height: 400px;
-  position: relative;
-
+counter:nth-child(odd){
+  background: red;
+  
 }
-
 
 .title {
   color: #999;
   /*font-weight: 900;*/
   text-transform: uppercase;
-  margin: 0 0 5px 0;
+  margin: 0 0 15px 0;
   font-size: 30px;
   /*position: absolute;
   top: 10px;

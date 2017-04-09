@@ -14,13 +14,12 @@ class Counters extends Component {
         return(
 
 
-            <div className="counters">
-
-                
-
+            <div>
 
                 {isFetching &&
-                    <div>fetching...</div>
+                    <div className="loading">
+                        <i className="material-icons">&#xE86A;</i>
+                    </div>
                 }
 
                 {isUpdating &&
@@ -28,10 +27,12 @@ class Counters extends Component {
                 }
 
                 {isError &&
-                    <div>there was an error...</div>
+                    <div className="error">
+                        <i className="material-icons">&#xE87F;</i>
+                    </div>
                 }
 
-                {counters.map((counter, index)=>{
+                {!isFetching && !isError && counters.map((counter, index)=>{
                     return <Counter 
                                 {...counter}
                                 isUpdating={isUpdating}
