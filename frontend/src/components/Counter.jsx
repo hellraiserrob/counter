@@ -42,19 +42,25 @@ class Counter extends Component {
         return(
 
             <div className="counter">
+
+                <div className="inner">
                 
-                <div className="title">
-                    {name}
+                    <div className="title">
+                        {name}
+                    </div>
+
+                    <button className="add" disabled={isUpdating} onClick={() => handleUpdateCounter(_id, value + 1)}>+</button>
+
+                    <div className="value">
+                        
+                        <strong>{value}</strong>
+                    </div>
+
+                    <button className="subtract" disabled={isUpdating} onClick={() => handleUpdateCounter(_id, value - 1)}>-</button>
+
                 </div>
 
-                <button className="add" disabled={isUpdating} onClick={() => handleUpdateCounter(_id, value + 1)}>+</button>
-
-                <div className="value">
-                    
-                    <strong>{value}</strong>
-                </div>
-
-                <button className="subtract" disabled={isUpdating} onClick={() => handleUpdateCounter(_id, value - 1)}>-</button>
+                
             </div>
         )
     }

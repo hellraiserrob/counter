@@ -14,7 +14,10 @@ class Counters extends Component {
         return(
 
 
-            <div>
+            <div className="counters">
+
+                
+
 
                 {isFetching &&
                     <div>fetching...</div>
