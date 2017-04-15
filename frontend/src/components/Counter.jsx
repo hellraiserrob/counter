@@ -22,7 +22,7 @@ class Counter extends Component {
         
         window.setTimeout(() => {
             ReactDOM.findDOMNode(this).classList.remove('highlight');
-        }, 500)
+        }, 1000)
 
     }
 
