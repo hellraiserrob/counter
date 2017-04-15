@@ -1,17 +1,25 @@
 {
-  "name": "counter",
-  "version": "0.1.0",
-  "engines": {
-    "node": "5.9.1"
-  },
-  "scripts": {
-    "start": "node server",
-    "heroku-postbuild": "cd server/ && npm install --only=dev && npm install cd ../frontend/ && npm install --only=dev && npm install && npm run build"
-  },
-  "cacheDirectories": [
-    "frontend/node_modules",
-    "server/node_modules"
-  ],
-  "dependencies": {},
-  "devDependencies": {}
+    "name": "counter",
+    "version": "0.1.0",
+    "engines": {
+        "node": "5.9.1"
+    },
+    "scripts": {
+        "start": "node server",
+        "dev": "nodemon server",
+        "heroku-postbuild": "cd frontend/ && npm install --only=dev && npm install && npm run build"
+    },
+    "cacheDirectories": [
+        "node_modules",
+        "frontend/node_modules"
+    ],
+    "dependencies": {
+        "body-parser": "^1.17.1",
+        "express": "^4.15.2",
+        "mongoose": "^4.8.6",
+        "socket.io": "^1.7.3"
+    },
+    "devDependencies": {
+        "nodemon": "^1.11.0"
+    }
 }
