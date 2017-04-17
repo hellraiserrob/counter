@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client'
 
-let socket = io.connect()
+let socket = io.connect({reconnection: true})
 let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 
 import thunkMiddleware from 'redux-thunk'
