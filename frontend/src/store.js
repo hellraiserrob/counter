@@ -4,6 +4,19 @@ import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client'
 
 let socket = io.connect({reconnection: true})
+
+socket.on('connect', () => {
+  console.log('connect fired!')
+})
+
+socket.on('disconnect', () => {
+  console.log('disconnect fired!')
+})
+
+socket.on('reconnect', () => {
+  console.log('reconnect fired!')
+})
+
 let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 
 import thunkMiddleware from 'redux-thunk'
