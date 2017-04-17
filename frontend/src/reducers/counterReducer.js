@@ -3,12 +3,23 @@ const initialState = {
     isFetching: false,
     isError: false,
     isUpdating: false,
-    counters: []
+    counters: [],
+    log: ['log']
 }
 
 function counterReducer(state = initialState, action) {
 
+    // console.log(action)
+
     switch (action.type) {
+
+        case 'CONNECT': {
+            
+            return Object.assign({}, state, {
+                log: state.log.push('connect')
+            })
+
+        }
 
         case 'UPDATE': {
             //console.log('update', action);
@@ -16,6 +27,7 @@ function counterReducer(state = initialState, action) {
 
             return Object.assign({}, state, {
                 isFetching: false,
+                isUpdating: false,
                 counters: state.counters.map((item, index) => {
                     
                     if(update._id !== item._id){

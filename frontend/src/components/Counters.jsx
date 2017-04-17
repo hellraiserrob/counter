@@ -10,11 +10,21 @@ class Counters extends Component {
     render(){
 
         const { counters, isFetching, isUpdating, isError, handleUpdateCounter} = this.props
-        
+       
         return(
 
 
             <div>
+
+                {/*<ul className="log">
+                    
+                    {log.map((entry, index)=> { 
+                        return <li key={index}>
+                            {entry}
+                        </li>
+                    })}
+
+                </ul>*/}
 
                 {isFetching &&
                     <div className="loading">
@@ -23,7 +33,10 @@ class Counters extends Component {
                 }
 
                 {isUpdating &&
-                    <div>updating...</div>
+                    <div className="updating">
+                        
+                        <i className="material-icons">&#xE86A;</i>
+                    </div>
                 }
 
                 {isError &&

@@ -7,8 +7,19 @@
  * request for counters
  */
 
-export function requestCounters() {
+export function connect() {
+    return {
+        type: 'CONNECT'
+    }
+}
 
+export function disconnect() {
+    return {
+        type: 'DISCONNECT'
+    }
+}
+
+export function requestCounters() {
     return {
         type: 'REQUEST_COUNTERS'
     }

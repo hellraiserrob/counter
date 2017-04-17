@@ -20,12 +20,14 @@ class CounterContainer extends Component  {
 
 function mapStateToProps(state) {
 
-    const { counters, isFetching, isError } = state.counterReducer
+    const { counters, isFetching, isError, isUpdating, log } = state.counterReducer
 
 	return {
 		counters,
 		isFetching,
-		isError
+		isError,
+		isUpdating,
+		log
 	}
 }
 
